@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <title>Számok keverése</title>
+    <style>
+        .grid-container {
+            display: grid;
+            grid-template-columns: auto auto auto;
+            gap: 10px;
+            justify-content: center;
+            align-items: center;
+            margin-top: 50px;
+        }
+        .grid-item {
+            text-align: center;
+            padding: 20px;
+            font-size: 30px;
+        }
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-container" id="numberGrid">
+        <div class="grid-item">1</div>
+        <div class="grid-item">2</div>
+        <div class="grid-item">3</div>
+        <div class="grid-item">4</div>
+        <div class="grid-item">5</div>
+        <div class="grid-item">6</div>
+        <div class="grid-item">7</div>
+        <div class="grid-item">8</div>
+        <div class="grid-item">9</div>
+    </div>
+    <div class="button-container">
+        <button onclick="shuffleNumbers()">Keverés</button>
+    </div>
+
+    <script>
+        function shuffleNumbers() {
+            const grid = document.getElementById('numberGrid');
+            let numbers = Array.from({ length: 9 }, (_, i) => i + 1);
+            numbers = numbers.sort(() => Math.random() - 0.5);
+
+            for (let i = 0; i < 9; i++) {
+                grid.children[i].textContent = numbers[i];
+            }
+        }
+    </script>
+</body>
+</html>
