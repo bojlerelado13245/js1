@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="hu">
+      <head>
+            <meta charset="utf-8" />
+            <meta
+                  name="viewport"
+                  content="width=device-width,initial-scale=1"
+            />
+            <title>Fitnesz Napló</title>
+            <link rel="stylesheet" href="./app.css" />
+      </head>
+      <body>
+            <div id="app">
+                  <header>
+                        <h1>Fitnesz Napló</h1>
+                        <div id="userbar" style="display: none">
+                              <span id="userEmail"></span>
+                              <button id="logoutBtn">Kijelentkezés</button>
+                        </div>
+                  </header>
+
+                  <main>
+                        <!-- Auth -->
+                        <section id="auth">
+                              <div id="loginBox">
+                                    <h2>Bejelentkezés</h2>
+                                    <input
+                                          id="loginEmail"
+                                          placeholder="Email"
+                                    />
+                                    <input
+                                          id="loginPassword"
+                                          type="password"
+                                          placeholder="Jelszó"
+                                    />
+                                    <button id="loginBtn">Bejelentkezés</button>
+                                    <p>
+                                          Még nincs fiók?
+                                          <a href="#" id="showRegister"
+                                                >Regisztráció</a
+                                          >
+                                    </p>
+                                    <div id="loginMsg" class="msg"></div>
+                              </div>
+
+                              <div id="registerBox" style="display: none">
+                                    <h2>Regisztráció</h2>
+                                    <input id="regEmail" placeholder="Email" />
+                                    <input
+                                          id="regPassword"
+                                          type="password"
+                                          placeholder="Jelszó"
+                                    />
+                                    <button id="registerBtn">
+                                          Regisztráció
+                                    </button>
+                                    <p>
+                                          Van fiókod?
+                                          <a href="#" id="showLogin"
+                                                >Bejelentkezés</a
+                                          >
+                                    </p>
+                                    <div id="regMsg" class="msg"></div>
+                              </div>
+                        </section>
+
+                        <!-- App -->
+                        <section id="appArea" style="display: none">
+                              <div class="grid">
+                                    <div class="col">
+                                          <h2>Napi edzések</h2>
+                                          <button id="refreshBtn">
+                                                Frissít
+                                          </button>
+                                          <ul id="workoutList"></ul>
+
+                                          <h3>Új edzés hozzáadása</h3>
+                                          <form id="workoutForm">
+                                                <label
+                                                      >Dátum
+                                                      <input
+                                                            id="wDate"
+                                                            type="date"
+                                                            required
+                                                /></label>
+                                                <label
+                                                      >Időtartam (perc)
+                                                      <input
+                                                            id="wDuration"
+                                                            type="number"
+                                                            min="1"
+                                                            required
+                                                /></label>
+                                                <label
+                                                      >Jegyzet
+                                                      <input
+                                                            id="wNotes"
+                                                            type="text"
+                                                /></label>
+
+                                                <div id="exercisesContainer">
+                                                      <h4>Gyakorlatok</h4>
+                                                      <div class="exerciseRow">
+                                                            <input
+                                                                  class="exName"
+                                                                  placeholder="Név"
+                                                            />
+                                                            <input
+                                                                  class="exReps"
+                                                                  placeholder="Reps"
+                                                                  type="number"
+                                                            />
+                                                            <input
+                                                                  class="exSets"
+                                                                  placeholder="Sets"
+                                                                  type="number"
+                                                            />
+                                                            <input
+                                                                  class="exWeight"
+                                                                  placeholder="Súly"
+                                                                  type="number"
+                                                                  step="0.1"
+                                                            />
+                                                            <button
+                                                                  class="removeExBtn"
+                                                                  type="button"
+                                                            >
+                                                                  -
+                                                            </button>
+                                                      </div>
+                                                </div>
+                                                <button
+                                                      id="addExerciseBtn"
+                                                      type="button"
+                                                >
+                                                      Gyakorlat hozzáadása
+                                                </button>
+                                                <br />
+                                                <button
+                                                      id="saveWorkoutBtn"
+                                                      type="submit"
+                                                >
+                                                      Mentés
+                                                </button>
+                                                <input
+                                                      type="hidden"
+                                                      id="editingId"
+                                                />
+                                          </form>
+                                    </div>
+
+                                    <div class="col">
+                                          <h2>Statisztikák</h2>
+                                          <div id="stats">
+                                                <p>
+                                                      Összes edzésre fordított
+                                                      idő:
+                                                      <span id="totalTime"
+                                                            >0</span
+                                                      >
+                                                      perc
+                                                </p>
+                                                <canvas
+                                                      id="weeklyChart"
+                                                      width="400"
+                                                      height="200"
+                                                ></canvas>
+                                          </div>
+                                    </div>
+                              </div>
+                        </section>
+                  </main>
+            </div>
+
+            <script src="./app.js"></script>
+      </body>
+</html>
